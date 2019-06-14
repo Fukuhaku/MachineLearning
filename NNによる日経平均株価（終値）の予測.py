@@ -72,7 +72,7 @@ plt.show()
 def data_split(data, start, end, lookback):
     length = abs(start-end)
     X = np.zeros((length, lookback))
-    y = np.zeros(length,)
+    y = np.zeros((length, 1))
     
     if end == 0:
         ## テスト用データの場合
@@ -125,7 +125,7 @@ df_predict =  pd.DataFrame(model.predict(X_test), columns=['予測値'])
 
 ## 予測結果をプロット
 #epochs = range(len(y_test))
-epochs = df.index[-30:]
+epochs = df.index[-lookback:]
 plt.title('実際の終値と予測値')
 plt.plot(epochs, y_test, 'b', alpha=0.6, marker='.', label='実際の終値', linewidth=1)
 plt.plot(epochs, df_predict['予測値'].values, 'r', alpha=0.6, marker='.', label='予測値', linewidth=1)
