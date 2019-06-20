@@ -100,6 +100,7 @@ result = model.fit(X_train, y_train,
                    verbose=0,   ## 詳細表示モード
                    epochs=epochs, 
                    batch_size=64, 
+                   shuffle=True, 
                    validation_data=(X_valid, y_valid))
 
 ## 訓練の損失値をプロット
@@ -118,7 +119,7 @@ plt.show()
 df_predict =  pd.DataFrame(model.predict(X_test), columns=['予測値'])
 
 ## 予測結果をプロット
-pre_date = df.index[-lookback:]
+pre_date = df.index[-lookback:].values
 plt.title('実際の終値と予測値')
 plt.plot(pre_date, y_test, 'b', alpha=0.6, marker='.', label='実際の終値', linewidth=1)
 plt.plot(pre_date, df_predict['予測値'].values, 'r', alpha=0.6, marker='.', label='予測値', linewidth=1)
