@@ -37,10 +37,9 @@ epochs = 3000
 
 ## データファイルを読み込む
 ## データ日付を index に設定
-df = pd.read_csv(data_file, index_col=0, encoding='cp932')
-
-## 最終行はデータではないため、削除
-df = df[:-1]
+## 最終行はデータではないため、スキップ
+df = pd.read_csv(data_file, index_col=0, encoding='cp932', 
+                 skipfooter=1, engine='python')
 
 ## 終値
 closing_price = df['終値'].values
