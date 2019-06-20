@@ -74,14 +74,8 @@ def data_split(data, start, end, lookback):
     X = np.zeros((length, lookback))
     y = np.zeros((length, 1))
     
-    if end == 0:
-        ## テスト用データの場合
-        start_temp = start - lookback
-    else:
-        start_temp = start
-           
     for i in range(length):
-        j = start_temp + i
+        j = start - lookback + i
         k = j + lookback
         
         X[i] = data[j:k]
