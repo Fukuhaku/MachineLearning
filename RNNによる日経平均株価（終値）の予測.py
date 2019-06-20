@@ -42,7 +42,7 @@ epochs = 3000
 df = pd.read_csv(data_file, index_col=0, encoding='cp932', 
                  skipfooter=1, engine='python')
 
-## 終値（Numpy Array）
+## 終値
 closing_price = df[['終値']].values
 
 ## 訓練・検証・テスト用データを作成
